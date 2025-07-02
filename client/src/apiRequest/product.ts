@@ -5,7 +5,7 @@ import {
 } from "@/schemaValidations/product.schema";
 
 export const productApiRequest = {
-  get: () => http.get("/products"),
+  getList: () => http.get<ProductResType>("/products"),
   create: (body: CreateProductBodyType) =>
     http.post<ProductResType>("products", body),
   uploadImage: (body: FormData) =>
