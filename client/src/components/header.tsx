@@ -1,31 +1,32 @@
-import ButtonLogout from '@/components/button-logout'
-import { ModeToggle } from '@/components/mode-toggle'
-import Link from 'next/link'
-import { cookies } from 'next/headers'
-import accountApiRequest from '@/apiRequest/account'
+import ButtonLogout from "@/components/button-logout";
+import { ModeToggle } from "@/components/mode-toggle";
+import Link from "next/link";
+import { cookies } from "next/headers";
+import accountApiRequest from "@/apiRequest/account";
+import { AccountResType } from "@/schemaValidations/account.schema";
 
-export default async function Header() {
-  const cookieStore = await cookies()
-  const sessionToken = cookieStore.get('sessionToken')?.value
-  let user = null
-  if (sessionToken) {
-    const data = await accountApiRequest.me(sessionToken)
-    user = data.payload.data
-  }
+export default async function Header({
+  user,
+}: {
+  user: AccountResType["data"] | null;
+}) {
   return (
     <div>
-      <ul className='flex space-x-4'>
+      <ul className="flex space-x-4">
         <li>
-          <Link href='/'>Trang chủ</Link>
+          <Link href="/">Trang chủ</Link>
         </li>
         <li>
-          <Link href='/products'>Sản phẩm</Link>
+          <Link href="/products">Sản phẩm</Link>
         </li>
         {user ? (
           <>
             <li>
               <div>
-                Xin chào <strong><Link href='/me'>{user.name}</Link></strong>
+                Xin chào{" "}
+                <strong>
+                  <Link href="/me">{user.name}</Link>
+                </strong>
               </div>
             </li>
             <li>
@@ -35,15 +36,15 @@ export default async function Header() {
         ) : (
           <>
             <li>
-              <Link href='/login'>Đăng nhập</Link>
+              <Link href="/login">Đăng nhập</Link>
             </li>
             <li>
-              <Link href='/register'>Đăng ký</Link>
+              <Link href="/register">Đăng ký</Link>
             </li>
           </>
         )}
       </ul>
       <ModeToggle />
     </div>
-  )
+  );
 }

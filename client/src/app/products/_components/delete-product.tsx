@@ -40,7 +40,7 @@ export default function DeleteProduct({
       {" "}
       <AlertDialog>
         <AlertDialogTrigger asChild>
-          <Button variant={"destructive"}>Delete</Button>
+          <Button variant={"destructive"}>Xóa</Button>
         </AlertDialogTrigger>
         <AlertDialogContent>
           <AlertDialogHeader>
