@@ -4,7 +4,12 @@ import { Button } from "@/components/ui/button";
 import { cookies } from "next/headers";
 import Image from "next/image";
 import Link from "next/link";
+import { Metadata } from 'next'
 
+export const metadata: Metadata = {
+  title: 'Danh sach  san pham',
+  description: 'danh sach san pham fongle'
+}
 export default async function ProductListPage() {
   const cookieStore = await cookies();
   const sessionToken = cookieStore.get("sessionToken");
