@@ -19,6 +19,9 @@ export default async function Header({
         <li>
           <Link href="/products">Sản phẩm</Link>
         </li>
+        <li>
+          <ButtonLogout />
+        </li>
         {user ? (
           <>
             <li>
@@ -28,9 +31,6 @@ export default async function Header({
                   <Link href="/me">{user.name}</Link>
                 </strong>
               </div>
-            </li>
-            <li>
-              <ButtonLogout />
             </li>
           </>
         ) : (
