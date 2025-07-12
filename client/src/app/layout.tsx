@@ -9,6 +9,7 @@ import { cookies } from "next/headers";
 import SlideSession from "@/components/slide-session";
 import accountApiRequest from "@/apiRequest/account";
 import { AccountResType } from "@/schemaValidations/account.schema";
+import { baseOpenGraph } from "@/app/shared-metadata";
 
 const inter = Inter({ subsets: ["vietnamese"] });
 
@@ -17,7 +18,8 @@ export const metadata: Metadata = {
     template: '%s | Productic',
     default: 'Productic'
   },
-  description: 'Học NextJs Free'
+  description: 'Học NextJs Free',
+  openGraph: baseOpenGraph
 }
 
 export default async function RootLayout({
